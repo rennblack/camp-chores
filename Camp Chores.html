@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My To-Dos</title>
+	<!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+	<!-- <script src=".js"></script> -->
+</head>
+<body>
+	<h1>Camp Whack-a-Doo Chores</h1>
+	<label for="name">Name:</label>
+	<input type="text" id="name" ><br/>
+	<form>	
+	Chore:
+	<select id="campChores">
+		<option>Select Chore</option>
+		<option value="Front Room Sweep">Front Room Sweep</option>
+		<option value="Back Room Sweep">Back Room Sweep</option>
+		<option value="Outside Grounds">Outside Grounds</option>
+		<option value="Clean Toilet">Clean Toilet</option>
+		<option value="Clean Sink">Clean Sink</option>
+		<option value="Trash Patrol and Supplies">Trash Patrol and Supplies</option>
+	</select>	
+	</form>	
+	<button id="btnToAddToMap">Add to Chore List</button>	
+	<button id="btnDisplayMap">Display Chore List</button>		
+	<div id="result"></div>	
+
+	<script>
+		let out= "<br/>" + "<h3>Chore List: <h3>";
+
+		const ADDBUTTON = document.getElementById("btnToAddToMap");
+		const DISPLAYBUTTON = document.getElementById("btnDisplayMap");
+		let chores = new Map();
+		ADDBUTTON.onclick = function(){
+		const name = document.getElementById("name");
+		const chore = document.getElementById("campChores");
+		chores.set(name.value, chore.value);
+		name.value = "";
+		chore.value = "";
+		};
+		DISPLAYBUTTON.onclick = function(){	
+		for(let x of chores.entries())
+		{
+		out += x[0] + ": " + x[1];
+		out += "<br/>";
+		}
+	
+		document.getElementById("result").innerHTML = out;
+		}
+       
+	
+     </script>
+</body>
+</html>
+
